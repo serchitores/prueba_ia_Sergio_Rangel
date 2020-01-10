@@ -1,0 +1,71 @@
+package aplicacion.tics.micaddiemxcaddie
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+class RakingActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_raking)
+        setUpRecyclerView()
+        //actionbar
+        val actionbar = supportActionBar
+        //set back button
+        actionbar!!.setDisplayHomeAsUpEnabled(true)
+        val btt5 = AnimationUtils.loadAnimation(this, R.anim.btt2)
+        val cadd = findViewById(R.id.caddie) as ImageView
+
+
+        cadd.startAnimation(btt5)
+    }
+    lateinit var mRecyclerView: RecyclerView
+    val mAdapter: AdapterServicios = AdapterServicios()
+
+    fun setUpRecyclerView() {
+        mRecyclerView = findViewById(R.id.recycler_servicios) as RecyclerView
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.layoutManager = LinearLayoutManager(this)
+        mAdapter.RecyclerAdapterCaddies(getServicios(), this)
+        mRecyclerView.adapter = mAdapter
+
+    }
+
+    //Array Clubs
+    fun getServicios(): MutableList<Servicios> {
+        var servicios: MutableList<Servicios> = ArrayList()
+        servicios.add(
+            Servicios(
+                "https://quarry.vteximg.com.br/arquivos/ids/314958-500-500/QC24A656GO-1.jpg?v=637092795212030000",
+                "Juan Carlos Ortiz",
+                "Excelente Servicio",
+                "5",
+                "$350",
+                "25/octubre/2019"
+                )
+        )
+        servicios.add(
+            Servicios(
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaGsotbwYi0DJs3ifMqqqsgoJrhZubP0_YH5Zhx8WvsaBz_Iw7Ew&s",
+                "Andres Rogelio Campos",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "4",
+                "$240",
+                "07,Octubre,2020"
+
+                )
+        )
+        servicios.add(
+            Servicios(
+                "https://static.zattini.com.br/produtos/camisa-polo-nyc-norwich-yatch-club-listras-masculina/12/KXY-0002-012/KXY-0002-012_zoom1.jpg?ims=544x",
+                "Jose Arturo Ramirez",
+                "muy agradable",
+                "5",
+                "$740",
+                "07,Octubre,2020"
+                )
+     
